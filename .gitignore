@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ONNX artifacts and generated model files
+*.onnx
+*.onnx_data
+
+# Generated data
+data/*
+!data/.gitkeep
+
+# OS/editor
+.DS_Store
+.vscode/
