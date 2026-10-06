@@ -36,3 +36,4 @@ models/birdnet/variants/
 models/birdnet/model.onnx
 models/birdnet/*.onnx
 data/samples/
+data/train/
