@@ -1,6 +1,5 @@
 """Bird call inference using BirdNET ONNX."""
 from pathlib import Path
-from typing import List, Tuple
 
 import librosa
 import numpy as np
@@ -41,7 +40,7 @@ def _load_audio(path: str) -> np.ndarray:
         audio = np.pad(audio, (0, pad))
     return audio.astype(np.float32).reshape(1, CLIP_SAMPLES)
 
-def predict(audio_path: str, top_k: int = 3) -> List[Tuple[str, float]]:
+def predict(audio_path: str, top_k: int = 3) -> list[tuple[str, float]]:
     session, labels = _load()
     audio = _load_audio(audio_path)
     input_name = session.get_inputs()[0].name
