@@ -21,13 +21,8 @@ def _load():
     if _session is None:
         if not MODEL_PATH.exists():
             raise FileNotFoundError(f"Model not found: {MODEL_PATH}")
-        opts = ort.SessionOptions()
-        opts.intra_op_num_threads = 1
-        opts.inter_op_num_threads = 1
-        opts.enable_mem_pattern = False
-        opts.enable_cpu_mem_arena = False
         _session = ort.InferenceSession(
-            str(MODEL_PATH), sess_options=opts, providers=["CPUExecutionProvider"]
+            str(MODEL_PATH), providers=["CPUExecutionProvider"]
         )
     if _labels is None:
         if not LABELS_PATH.exists():

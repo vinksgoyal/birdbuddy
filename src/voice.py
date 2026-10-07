@@ -15,13 +15,7 @@ def _load():
     if _voice is None:
         if not VOICE_PATH.exists():
             raise FileNotFoundError(f"Piper voice not found: {VOICE_PATH}")
-        import onnxruntime as ort
-        opts = ort.SessionOptions()
-        opts.intra_op_num_threads = 1
-        opts.inter_op_num_threads = 1
-        opts.enable_mem_pattern = False
-        opts.enable_cpu_mem_arena = False
-        _voice = PiperVoice.load(str(VOICE_PATH), sess_options=opts)
+        _voice = PiperVoice.load(str(VOICE_PATH))
     return _voice
 
 def speak(text: str) -> str:
