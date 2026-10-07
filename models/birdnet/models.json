@@ -1,0 +1,249 @@
+{
+  "schema": 2,
+  "repo": "tphakala/BirdNET-v2.4",
+  "family": "birdnet",
+  "updated": "2026-10-03",
+  "family_meta": {
+    "display_name": "BirdNET v2.4",
+    "description": "Global bird sound classifier using the BirdNET v2.4 architecture (6,522 species and other sound classes; scientific and common names)",
+    "author": "Cornell Lab of Ornithology & Chemnitz University of Technology",
+    "license": "CC-BY-NC-SA-4.0",
+    "commercial_use": false,
+    "upstream_url": "https://github.com/birdnet-team/BirdNET-Analyzer",
+    "species_count": 6522
+  },
+  "requirements_note": "requirements.min_ram_mb is a conservative, high-biased RAM floor: measured peak RSS + 15% where a benchmark exists, else a size-derived estimate biased high (a too-low floor risks OOM; a too-high floor only over-excludes on the smallest devices). Measured values will replace the estimates over time.",
+  "naming": "legacy names, frozen; new files follow <family>-<upstream>[-<region>]-<variant>-b<build>.<ext>",
+  "selection": {
+    "x86-64/onnxruntime": "BirdNET_v2.4_fp32_dfttrunc.onnx",
+    "x86-64/openvino-cpu": "BirdNET_v2.4_fp32_dfttrunc.onnx",
+    "aarch64-a76/openvino": "BirdNET_v2.4_fp32_dfttrunc.onnx",
+    "aarch64/onnxruntime": "BirdNET_v2.4_int8_arm_dfttrunc.onnx",
+    "cuda": "BirdNET_v2.4_fp32_dfttrunc.onnx"
+  },
+  "notes": "The _dfttrunc builds truncate the in-graph mel DFT to the bins the filterbank actually uses: bit-exact and ~1.4-2x faster on CPU/OpenVINO. Prefer them; the non-dfttrunc files are kept for existing installs.",
+  "models": [
+    {
+      "path": "BirdNET_v2.4_fp32.onnx",
+      "family": "birdnet",
+      "upstream_version": "2.4",
+      "upstream_source": "https://zenodo.org/records/15050749",
+      "build": 1,
+      "legacy": true,
+      "variant": "fp32",
+      "precision": "fp32",
+      "region": null,
+      "classes": 6522,
+      "labels": "labels.txt",
+      "labels_sha256": "487937b6ad132b8506215523209a87b86adc9dce8e5ed3048ce9268189dddd3d",
+      "labels_size_bytes": 259894,
+      "input": {
+        "sample_rate": 48000,
+        "window_seconds": 3,
+        "samples": 144000,
+        "shape": [
+          "batch",
+          144000
+        ],
+        "dtype": "float32"
+      },
+      "backends": {
+        "onnxruntime-cpu": {
+          "supported": true,
+          "recommended": true
+        },
+        "openvino-cpu": {
+          "supported": true,
+          "recommended": true
+        },
+        "openvino-gpu": {
+          "supported": true,
+          "recommended": false
+        },
+        "cuda": {
+          "supported": true,
+          "recommended": true
+        },
+        "tensorrt": {
+          "supported": true,
+          "recommended": false
+        }
+      },
+      "backend_support_verified": true,
+      "sha256": "f49b686838f62fc8c5bcb4364cd514c64882f6fd666c204aa5d4eb80a7795264",
+      "size_bytes": 62269581,
+      "superseded_by": null,
+      "requirements": {
+        "min_ram_mb": 250
+      }
+    },
+    {
+      "path": "BirdNET_v2.4_fp32_dfttrunc.onnx",
+      "family": "birdnet",
+      "upstream_version": "2.4",
+      "upstream_source": "https://zenodo.org/records/15050749",
+      "build": 1,
+      "legacy": true,
+      "variant": "fp32",
+      "precision": "fp32",
+      "region": null,
+      "classes": 6522,
+      "labels": "labels.txt",
+      "labels_sha256": "487937b6ad132b8506215523209a87b86adc9dce8e5ed3048ce9268189dddd3d",
+      "labels_size_bytes": 259894,
+      "input": {
+        "sample_rate": 48000,
+        "window_seconds": 3,
+        "samples": 144000,
+        "shape": [
+          "batch",
+          144000
+        ],
+        "dtype": "float32"
+      },
+      "backends": {
+        "onnxruntime-cpu": {
+          "supported": true,
+          "recommended": true
+        },
+        "openvino-cpu": {
+          "supported": true,
+          "recommended": true
+        },
+        "openvino-gpu": {
+          "supported": true,
+          "recommended": false
+        },
+        "cuda": {
+          "supported": true,
+          "recommended": true
+        },
+        "tensorrt": {
+          "supported": true,
+          "recommended": false
+        }
+      },
+      "backend_support_verified": true,
+      "sha256": "3b72e88b3ad0c310a41adabccf8cf75b1a05daeeb40884ebd38038c91d0e423d",
+      "size_bytes": 54068648,
+      "superseded_by": null,
+      "optimizations": [
+        "dft-truncated"
+      ],
+      "requirements": {
+        "min_ram_mb": 250
+      }
+    },
+    {
+      "path": "BirdNET_v2.4_int8_arm.onnx",
+      "family": "birdnet",
+      "upstream_version": "2.4",
+      "upstream_source": "https://zenodo.org/records/15050749",
+      "build": 1,
+      "legacy": true,
+      "variant": "int8-arm",
+      "precision": "int8-arm",
+      "region": null,
+      "classes": 6522,
+      "labels": "labels.txt",
+      "labels_sha256": "487937b6ad132b8506215523209a87b86adc9dce8e5ed3048ce9268189dddd3d",
+      "labels_size_bytes": 259894,
+      "input": {
+        "sample_rate": 48000,
+        "window_seconds": 3,
+        "samples": 144000,
+        "shape": [
+          "batch",
+          144000
+        ],
+        "dtype": "float32"
+      },
+      "backends": {
+        "onnxruntime-cpu": {
+          "supported": true,
+          "recommended": true
+        },
+        "openvino-cpu": {
+          "supported": true,
+          "recommended": false
+        },
+        "openvino-gpu": {
+          "supported": false,
+          "recommended": false
+        },
+        "cuda": {
+          "supported": false,
+          "recommended": false
+        },
+        "tensorrt": {
+          "supported": false,
+          "recommended": false
+        }
+      },
+      "backend_support_verified": true,
+      "sha256": "6a2323fe8f99c2af4bb325cf8f11b52748a86aa1f2c9e706c1ae7f907289521a",
+      "size_bytes": 46886045,
+      "superseded_by": null,
+      "requirements": {
+        "min_ram_mb": 250
+      }
+    },
+    {
+      "path": "BirdNET_v2.4_int8_arm_dfttrunc.onnx",
+      "family": "birdnet",
+      "upstream_version": "2.4",
+      "upstream_source": "https://zenodo.org/records/15050749",
+      "build": 1,
+      "legacy": true,
+      "variant": "int8-arm",
+      "precision": "int8-arm",
+      "region": null,
+      "classes": 6522,
+      "labels": "labels.txt",
+      "labels_sha256": "487937b6ad132b8506215523209a87b86adc9dce8e5ed3048ce9268189dddd3d",
+      "labels_size_bytes": 259894,
+      "input": {
+        "sample_rate": 48000,
+        "window_seconds": 3,
+        "samples": 144000,
+        "shape": [
+          "batch",
+          144000
+        ],
+        "dtype": "float32"
+      },
+      "backends": {
+        "onnxruntime-cpu": {
+          "supported": true,
+          "recommended": true
+        },
+        "openvino-cpu": {
+          "supported": true,
+          "recommended": false
+        },
+        "openvino-gpu": {
+          "supported": false,
+          "recommended": false
+        },
+        "cuda": {
+          "supported": false,
+          "recommended": false
+        },
+        "tensorrt": {
+          "supported": false,
+          "recommended": false
+        }
+      },
+      "backend_support_verified": true,
+      "sha256": "7550498ba996064feca12005ff4133eb1d35741c4061376e7a987d8227518893",
+      "size_bytes": 38727042,
+      "superseded_by": null,
+      "optimizations": [
+        "dft-truncated"
+      ],
+      "requirements": {
+        "min_ram_mb": 250
+      }
+    }
+  ]
+}

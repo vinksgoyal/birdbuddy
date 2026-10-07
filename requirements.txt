@@ -6,3 +6,4 @@ soundfile
 requests
 python-dotenv
 scipy
+tinker

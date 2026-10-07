@@ -1,0 +1,8 @@
+onnxruntime
+librosa
+numpy
+gradio
+soundfile
+requests
+python-dotenv
+scipy
