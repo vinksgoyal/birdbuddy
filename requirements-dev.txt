@@ -1,0 +1,4 @@
+-r requirements.txt
+tinker
+transformers
+beautifulsoup4

@@ -3,7 +3,7 @@ librosa
 numpy
 gradio
 soundfile
-requests
-python-dotenv
 scipy
-tinker
+python-dotenv
+requests
+piper-tts
