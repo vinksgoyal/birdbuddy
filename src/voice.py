@@ -21,13 +21,13 @@ def _load():
 def speak(text: str) -> str:
     """Synthesize text to a WAV file and return the path."""
     voice = _load()
-    tmp = tempfile.NamedTemporaryFile(
+    with tempfile.NamedTemporaryFile(
         suffix=".wav", delete=False, prefix="birdbuddy_"
-    )
-    tmp.close()
-    with wave.open(tmp.name, "wb") as w:
+    ) as tmp:
+        path = tmp.name
+    with wave.open(path, "wb") as w:
         voice.synthesize_wav(text, w)
-    return tmp.name
+    return path
 
 if __name__ == "__main__":
     import sys
