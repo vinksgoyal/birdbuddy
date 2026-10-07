@@ -28,6 +28,8 @@ pnpm-debug.log*
 # Generated data
 data/*
 !data/.gitkeep
+!data/tinker_train.jsonl
+!data/tinker_val.jsonl
 
 # OS/editor
 .DS_Store
@@ -37,3 +39,5 @@ models/birdnet/model.onnx
 models/birdnet/*.onnx
 data/samples/
 data/train/
+data/tinker_output/
+.env
