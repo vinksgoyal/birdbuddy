@@ -41,3 +41,4 @@ data/samples/
 data/train/
 data/tinker_output/
 .env
+.backboard/
